@@ -120,7 +120,7 @@ export default {
   methods: {
     getUsers() {
       axios
-        .get("http://localhost:3000/admin/checkPayment")
+        .get("https://paapai-mongo-backend.vercel.app/admin/checkPayment")
         .then(response => {
           this.users = response.data;
         })
@@ -129,7 +129,7 @@ export default {
         });
     },
     changeStatusApprove(userId) {
-      axios.post(`http://localhost:3000/toApprove/${userId}`)
+      axios.post(`https://paapai-mongo-backend.vercel.app/toApprove/${userId}`)
         .then(response => {
           this.$router.push({ path: "/admin/checkPayment" });
           this.getUsers();
@@ -139,7 +139,7 @@ export default {
         });
     },
     changeStatusReject(userId) {
-      axios.post(`http://localhost:3000/toReject/${userId}`)
+      axios.post(`https://paapai-mongo-backend.vercel.app/toReject/${userId}`)
         .then(response => {
           this.$router.push({ path: "/admin/checkPayment" });
           this.getUsers();

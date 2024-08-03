@@ -124,7 +124,7 @@
                     </div>
                   </div>
                   <div class="col">
-                    <img :src="users.slip" alt="..."  />
+                    <img :src="users.slip" alt="..." />
                   </div>
                 </div>
               </div>
@@ -152,7 +152,7 @@ export default {
   methods: {
     getUsers(Id) {
       axios
-        .get(`http://localhost:3000/admin/slip/${Id}`)
+        .get(`https://paapai-mongo-backend.vercel.app/admin/slip/${Id}`)
         .then(response => {
           this.users = response.data;
         })
@@ -169,10 +169,12 @@ export default {
 .font {
   font-family: "Kanit", sans-serif;
 }
+
 .logo {
   height: 150px;
   width: 150px;
 }
+
 img {
   display: block;
   margin-left: auto;

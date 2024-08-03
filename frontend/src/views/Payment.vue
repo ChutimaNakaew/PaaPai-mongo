@@ -19,11 +19,7 @@
                 </div>
               </div>
               <div class="row mt-3">
-                <div
-                  class="col-6 p-2 d-inline"
-                  v-for="pay in pays"
-                  :key="pay.id"
-                >
+                <div class="col-6 p-2 d-inline" v-for="pay in pays" :key="pay.id">
                   <div class="row p-2">
                     <div class="col-4">
                       <img :src="pay.account_img" />
@@ -52,11 +48,7 @@
               </div>
               <div class="row mt-5">
                 <div class="col-12 d-flex align-items-center flex-column">
-                  <button
-                    class="btn btn-primary"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                  >
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     ส่งหลักฐานการชำระเงิน
                   </button>
                 </div>
@@ -66,13 +58,7 @@
         </div>
       </div>
       <!-- Modal -->
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <form @submit.prevent="submit" enctype="multipart/form-data">
@@ -80,23 +66,14 @@
                 <h5 class="modal-title" id="exampleModalLabel">
                   ส่งหลักฐานการชำระเงิน
                 </h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <div class="row">
                   <div class="col">ธนาคารที่ทำการชำระเงิน</div>
                   <div class="col">
-                    <select
-                      name="bank"
-                      v-model="bank"
-                      class="form-select form-select-sm"
-                      aria-label=".form-select-sm example"
-                    >
+                    <select name="bank" v-model="bank" class="form-select form-select-sm"
+                      aria-label=".form-select-sm example">
                       <option value="">Open this select menu</option>
                       <option value="ธนาคารกสิกรไทย">ธนาคารกสิกรไทย</option>
                       <option value="ธนาคารไทยพาณิชย์">ธนาคารไทยพาณิชย์</option>
@@ -109,32 +86,23 @@
                     </select>
                   </div>
                 </div>
-                <span
-                  ><p v-if="err.length && bank == ''">
-                    <span
-                      v-for="error in err"
-                      :key="error.key"
-                      style="color:red;"
-                    >
+                <span>
+                  <p v-if="err.length && bank == ''">
+                    <span v-for="error in err" :key="error.key" style="color:red;">
                       <p v-if="error === 'กรุณาเลือกธนาคาร'">
                         <span>
                           {{ error }}
                         </span>
                       </p>
                     </span>
-                  </p></span
-                >
+                  </p>
+                </span>
                 <!-- <span v-if="err.has('bank')">{{err.first('bank')}} </span>   -->
 
                 <div class="row my-2">
                   <div class="form-group">
                     <label class="form-label">รหัสลูกค้า</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      readonly
-                      :value="info.bookingId"
-                    />
+                    <input class="form-control" type="text" readonly :value="info.bookingId" />
                     <!-- <select
                       class="form-select"
                       name="bookingId"
@@ -147,50 +115,30 @@
                 <div class="row my-2">
                   <div class="col-12">
                     <label class="form-label">สลิปการโอนเงิน</label>
-                    <input
-                      name="slip"
-                      accept="image/*"
-                      class="form-control form-control-sm"
-                      type="file"
-                      @change="saveImg"
-                    />
+                    <input name="slip" accept="image/*" class="form-control form-control-sm" type="file"
+                      @change="saveImg" />
                   </div>
                 </div>
-                <span
-                  ><p v-if="err.length && slip == null">
-                    <span
-                      v-for="error in err"
-                      :key="error.key"
-                      style="color:red;"
-                    >
+                <span>
+                  <p v-if="err.length && slip == null">
+                    <span v-for="error in err" :key="error.key" style="color:red;">
                       <p v-if="error === 'กรุณาอัพโหลดหลักฐานชำระเงิน'">
                         <span>
                           {{ error }}
                         </span>
                       </p>
                     </span>
-                  </p></span
-                >
+                  </p>
+                </span>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                   ยกเลิก
                 </button>
-                <button v-if="err.length >= 0 && (bank == '' || slip == null)"
-                  type="submit"
-                  class="btn btn-primary"
-                >
+                <button v-if="err.length >= 0 && (bank == '' || slip == null)" type="submit" class="btn btn-primary">
                   ยืนยัน
                 </button>
-                <button v-else
-                  data-bs-dismiss="modal"
-                  type="submit"
-                  class="btn btn-primary"
-                >
+                <button v-else data-bs-dismiss="modal" type="submit" class="btn btn-primary">
                   ยืนยัน
                 </button>
               </div>
@@ -224,7 +172,7 @@ export default {
   methods: {
     getPayment(id) {
       axios
-        .get(`http://localhost:3000/form/${id}/payment`)
+        .get(`https://paapai-mongo-backend.vercel.app/form/${id}/payment`)
         .then(response => {
           this.pays = response.data;
         })
@@ -234,7 +182,7 @@ export default {
     },
     getConfirmDetail(id) {
       axios
-        .get(`http://localhost:3000/form/${id}/confirm`)
+        .get(`https://paapai-mongo-backend.vercel.app/form/${id}/confirm`)
         .then(response => {
           this.info = response.data;
         })
@@ -260,7 +208,7 @@ export default {
       e.preventDefault();
       if (this.bank && this.slip) {
         axios
-          .post("http://localhost:3000/user-update", {
+          .post("https://paapai-mongo-backend.vercel.app/user-update", {
             bank: this.bank,
             bookingId: this.info.bookingId,
             slip: this.slip
@@ -285,7 +233,7 @@ export default {
     }
   },
   computed: {
-    errors: function() {
+    errors: function () {
       if (!this.bank) {
         return ["กรุณาเลือกธนาคาร"];
       }

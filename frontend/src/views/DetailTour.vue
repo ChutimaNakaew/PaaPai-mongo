@@ -60,7 +60,7 @@ export default {
   methods: {
     getToursDetail(tourName) {
       axios
-        .get(`http://localhost:3000/tour/${tourName}`)
+        .get(`https://paapai-mongo-backend.vercel.app/tour/${tourName}`)
         .then((response) => {
           this.details = response.data;
         })

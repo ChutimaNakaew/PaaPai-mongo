@@ -152,7 +152,7 @@ export default {
   methods: {
     getTours() {
       axios
-        .get("http://localhost:3000")
+        .get("https://paapai-mongo-backend.vercel.app")
         .then(response => {
           this.tours = response.data;
         })
@@ -162,7 +162,7 @@ export default {
     },
     doSearch(value) {
       axios
-        .get("http://localhost:3000" + this.search)
+        .get("https://paapai-mongo-backend.vercel.app" + this.search)
         .then(response => {
           this.tours = response.data;
         })

@@ -132,7 +132,7 @@ export default {
   methods: {
     getUsers(Id) {
       axios
-        .get(`http://localhost:3000/admin/info/${Id}`)
+        .get(`https://paapai-mongo-backend.vercel.app/admin/info/${Id}`)
         .then(response => {
           this.users = response.data;
         })

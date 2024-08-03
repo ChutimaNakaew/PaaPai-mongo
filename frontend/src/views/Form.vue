@@ -223,7 +223,7 @@ export default {
   methods: {
     getFormDetail(tourName) {
       axios
-        .get(`http://localhost:3000/tour/${tourName}/form`)
+        .get(`https://paapai-mongo-backend.vercel.app/tour/${tourName}/form`)
         .then(response => {
           this.info = response.data;
         })
@@ -241,7 +241,7 @@ export default {
         this.err.date = 'Plese select your tour date'
       } else {
         axios
-          .post(`http://localhost:3000/users-create`, {
+          .post(`https://paapai-mongo-backend.vercel.app/users-create`, {
             firstname: this.firstname,
             lastname: this.lastname,
             phone: this.phone,

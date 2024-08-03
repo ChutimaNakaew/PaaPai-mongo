@@ -2,37 +2,18 @@
   <div id="app">
     <div class="container-fluid mb-3 mt-2 font">
       <div
-        class="card mx-auto position-absolute top-50 start-50 translate-middle shadow-sm p-3 mb-5 bg-body rounded card-w"
-      >
-        <img
-          src="../assets/paapai-logo.png"
-          class="img-fluid rounded w-75 mx-auto"
-          alt="LOGO_PaaPai"
-        />
+        class="card mx-auto position-absolute top-50 start-50 translate-middle shadow-sm p-3 mb-5 bg-body rounded card-w">
+        <img src="../assets/paapai-logo.png" class="img-fluid rounded w-75 mx-auto" alt="LOGO_PaaPai" />
         <div class="card-body mx-4">
-          <form
-            class="needs-validation"
-            novalidate
-            @submit.prevent="submit"
-            method="post"
-          >
+          <form class="needs-validation" novalidate @submit.prevent="submit" method="post">
             <div class="mb-3">
               <label class="form-label">Booking ID:</label>
-              <input
-                class="form-control"
-                required
-                name="bookingId"
-                v-model="bookingId"
-              />
-              <span
-                ><p v-if="errors.length">
-                  <span
-                    v-for="error in errors"
-                    :key="error.key"
-                    style="color:red;"
-                    >{{ error }}</span
-                  >
-                </p></span>
+              <input class="form-control" required name="bookingId" v-model="bookingId" />
+              <span>
+                <p v-if="errors.length">
+                  <span v-for="error in errors" :key="error.key" style="color:red;">{{ error }}</span>
+                </p>
+              </span>
               <div class="invalid-feedback">
                 Please input your bookingId.
               </div>
@@ -70,7 +51,7 @@ export default {
       e.preventDefault();
       if (this.bookingId && this.bookingId.length === 6) {
         axios
-          .post("http://localhost:3000/check/status", {
+          .post("https://paapai-mongo-backend.vercel.app/check/status", {
             bookingId: this.bookingId
           })
           .then(response => {
@@ -86,12 +67,12 @@ export default {
 
       this.errors = [];
 
-      if (this.bookingId.length !== 6 ) {
+      if (this.bookingId.length !== 6) {
         this.errors.push("Booking Id is required and must be 6 characters!");
       }
     },
     computed: {
-      errors: function() {
+      errors: function () {
         if (!this.bookingId) {
           return ["Booking Id is required and must be 6 characters!"];
         }

@@ -143,7 +143,7 @@ export default {
   methods: {
     getInfo() {
       axios
-        .get("http://localhost:3000/admin")
+        .get("https://paapai-mongo-backend.vercel.app/admin")
         .then(response => {
           this.infos = response.data;
         })

@@ -122,7 +122,7 @@ export default {
   methods: {
     getUsers(tourName) {
       axios
-        .get(`http://localhost:3000/admin/allTour/${tourName}/detail`)
+        .get(`https://paapai-mongo-backend.vercel.app/admin/allTour/${tourName}/detail`)
         .then(response => {
           this.users = response.data;
         })

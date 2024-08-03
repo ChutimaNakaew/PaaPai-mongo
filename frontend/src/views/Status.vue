@@ -5,8 +5,7 @@
         <div class="card shadow card-w">
           <div class="card-body my-4">
             <div class="text-center">
-              <img src="../assets/paapai-logo.png"
-                class="rounded-circle" alt="..." />
+              <img src="../assets/paapai-logo.png" class="rounded-circle" alt="..." />
             </div>
             <h3 class="card-title d-flex justify-content-center mt-3">
               {{ user.tour_name }}
@@ -108,7 +107,7 @@ export default {
   methods: {
     getUser(id) {
       axios
-        .get(`http://localhost:3000/booking/${id}/status`)
+        .get(`https://paapai-mongo-backend.vercel.app/booking/${id}/status`)
         .then((response) => {
           this.user = response.data;
           this.state = response.data.state === "" ? "" : response.data.state === 'true' ? 'true' : 'false'
@@ -122,6 +121,7 @@ export default {
 </script>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+
 .font {
   font-family: "Kanit", sans-serif;
 }

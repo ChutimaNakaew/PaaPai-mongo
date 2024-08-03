@@ -51,7 +51,7 @@ export default {
     methods: {
         submit() {
             axios
-                .post("http://localhost:3000/admin/login", { username: this.username, password: this.password })
+                .post("https://paapai-mongo-backend.vercel.app/admin/login", { username: this.username, password: this.password })
                 .then(response => {
                     console.log(response.data)
                     if (response.data !== 'invalid' && response.data !== null) {

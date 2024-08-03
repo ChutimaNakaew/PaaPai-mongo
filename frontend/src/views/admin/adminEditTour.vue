@@ -15,7 +15,8 @@
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">ชื่อทัวร์</label>
                 <div class="input-group">
-                  <input v-if="name === ''" type="text" class="form-control" name="name" :value="details.name" readonly />
+                  <input v-if="name === ''" type="text" class="form-control" name="name" :value="details.name"
+                    readonly />
                   <input v-else-if="name !== ''" type="text" class="form-control" name="name" :value="name" readonly />
                   <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2"><i class="bi bi-pencil"
@@ -34,8 +35,8 @@
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">จังหวัด</label>
                 <div class="input-group">
-                  <input v-if="province === ''" type="text" class="form-control" name="province" :value="details.province"
-                    readonly />
+                  <input v-if="province === ''" type="text" class="form-control" name="province"
+                    :value="details.province" readonly />
                   <input v-else-if="province !== ''" type="text" class="form-control" name="province" :value="province"
                     readonly />
                   <div class="input-group-append">
@@ -57,7 +58,8 @@
                 <div class="input-group">
                   <input v-if="price === 0" type="text" class="form-control" name="price" :value="details.price"
                     readonly />
-                  <input v-else-if="price !== ''" type="text" class="form-control" name="price" :value="price" readonly />
+                  <input v-else-if="price !== ''" type="text" class="form-control" name="price" :value="price"
+                    readonly />
                   <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2"><i class="bi bi-pencil"
                         @click="updatePrice"></i></span>
@@ -124,7 +126,8 @@
                   </div>
                 </div>
                 <div v-if="edit_date_first === true" class="input-group my-2">
-                  <b-form-datepicker v-model="date_first" name="date_first" class="mb-2" locale="en"></b-form-datepicker>
+                  <b-form-datepicker v-model="date_first" name="date_first" class="mb-2"
+                    locale="en"></b-form-datepicker>
                   <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2"><i class="bi bi-check2"
                         @click="saveDate_first(date_first)"></i></span>
@@ -265,7 +268,7 @@ export default {
   methods: {
     getToursDetail(tourId) {
       axios
-        .get(`http://localhost:3000/edit/${tourId}`)
+        .get(`https://paapai-mongo-backend.vercel.app/edit/${tourId}`)
         .then(response => {
           this.details = response.data;
         })
@@ -380,7 +383,7 @@ export default {
     submit() {
       this.check()
       axios
-        .post("http://localhost:3000/updateTour/" + this.$route.params.id, {
+        .post("https://paapai-mongo-backend.vercel.app/updateTour/" + this.$route.params.id, {
           name: this.name,
           province: this.province,
           price: this.price,

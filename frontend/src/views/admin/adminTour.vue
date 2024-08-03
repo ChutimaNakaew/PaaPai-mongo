@@ -103,7 +103,7 @@ export default {
   methods: {
     getTours() {
       axios
-        .get("http://localhost:3000/admin/allTour")
+        .get("https://paapai-mongo-backend.vercel.app/admin/allTour")
         .then(response => {
           this.tours = response.data;
         })

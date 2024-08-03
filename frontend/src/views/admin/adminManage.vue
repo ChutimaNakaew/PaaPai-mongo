@@ -124,7 +124,7 @@ export default {
   methods: {
     getTours() {
       axios
-        .get("http://localhost:3000/admin/manage")
+        .get("https://paapai-mongo-backend.vercel.app/admin/manage")
         .then(response => {
           this.tours = response.data;
         })
@@ -133,7 +133,7 @@ export default {
         });
     },
     deleteTour(tourId) {
-      axios.delete(`http://localhost:3000/delete/${tourId}`)
+      axios.delete(`https://paapai-mongo-backend.vercel.app/delete/${tourId}`)
         .then(response => {
           this.$router.push({ path: "/admin/manage" });
           this.getTours();

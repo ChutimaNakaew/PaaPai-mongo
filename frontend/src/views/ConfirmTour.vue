@@ -155,7 +155,7 @@ export default {
   methods: {
     getConfirmDetail(id) {
       axios
-        .get(`http://localhost:3000/form/${id}/confirm`)
+        .get(`https://paapai-mongo-backend.vercel.app/form/${id}/confirm`)
         .then((response) => {
           this.info = response.data;
         })
@@ -166,7 +166,7 @@ export default {
     submit(Id){
       if (this.confirm) {
       axios
-        .get(`http://localhost:3000/form/${Id}/payment`)
+        .get(`https://paapai-mongo-backend.vercel.app/form/${Id}/payment`)
         .then(response => {
             this.$router.push({
               path: "payment"

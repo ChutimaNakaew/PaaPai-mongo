@@ -127,7 +127,7 @@ export default {
   methods: {
     getUsers() {
       axios
-        .get("http://localhost:3000/admin/approve")
+        .get("https://paapai-mongo-backend.vercel.app/admin/approve")
         .then(response => {
           this.users = response.data;
         })
@@ -136,7 +136,7 @@ export default {
         });
     },
     changeStatus(userId) {
-      axios.post(`http://localhost:3000/toReject/${userId}`)
+      axios.post(`https://paapai-mongo-backend.vercel.app/toReject/${userId}`)
         .then(response => {
           this.$router.push({ path: "/admin/approve" });
           this.getUsers();
